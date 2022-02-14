@@ -47,7 +47,9 @@ public class Main {
         System.out.println("Busca em largura");
         Grafo.buscaEmLargura(sete);
 
-        System.out.println(grafo.verificarAresta(cinco, quatro));
+        System.out.println(grafo.verificarAresta(cinco, quatro) + "\n\n\n\n\n\n");
+
+        grafo.buscaDijkstra(um, um);
     }
 
 }

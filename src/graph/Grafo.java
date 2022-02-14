@@ -48,6 +48,34 @@ public class Grafo {
 
     }
 
+    public void buscaDijkstra(Vertice inicio, Vertice destino) {
+        ArrayList<Vertice> verticesAbertos = new ArrayList<>();
+        Map<Vertice, Integer> vAnterior_peso = new HashMap<Vertice, Integer>(); // esse map deveria conter(cada aresta, um antecessor e peso até ali)
+        vertices.forEach(vertice -> vAnterior_peso.put(vertice, Integer.MAX_VALUE));
+        vAnterior_peso.put(inicio, 0);
+        vertices.forEach(vertice -> verticesAbertos.add(vertice));
+        while (!verticesAbertos.isEmpty()) {
+            int minValueOfVertice = Integer.MAX_VALUE;
+            Vertice minVertexValue = null;
+
+            for (Vertice v : verticesAbertos) {
+                if (vAnterior_peso.get(v) < minValueOfVertice) {
+                    minValueOfVertice = vAnterior_peso.get(v);
+                    minVertexValue = v;
+                }
+            }
+
+            verticesAbertos.remove(minVertexValue);
+
+            // relaxar aresta
+            for (Aresta a : minVertexValue.getArestas()) {
+                System.out.println(a.getEnd().getData());
+                vAnterior_peso.put(a.getEnd(), ); // resolver essa estrutura
+                
+            }
+        }
+    }
+
     public Vertice addVertice(String info) {
         Vertice newVertice = new Vertice(info);
         this.vertices.add(newVertice);

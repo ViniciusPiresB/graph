@@ -72,6 +72,9 @@ public class Grafo {
                     minVertexValue = v;
                 }
             }
+            if (minVertexValue == null)
+                break;
+
             System.out.println("Vertice com valor minimo: " + minVertexValue.getData());
 
             verticesAbertos.remove(minVertexValue);
@@ -84,6 +87,10 @@ public class Grafo {
                 }
             }
         }
+        Vertice anterior = vAnterior.get(destino);
+        System.out.println(destino.getData());
+        System.out.println(anterior.getData());
+        System.out.println(vAnterior.get(anterior).getData());
     }
 
     public Vertice addVertice(String info) {

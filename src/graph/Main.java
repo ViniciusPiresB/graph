@@ -17,7 +17,7 @@ public class Main {
     public static void main(String[] args) {
         // TODO code application logic here
         boolean temGrau = true;
-        boolean eDirecionado = false;
+        boolean eDirecionado = true;
 
         Grafo grafo = new Grafo(temGrau, eDirecionado);
         Vertice um = grafo.addVertice("1");

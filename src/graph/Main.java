@@ -28,28 +28,28 @@ public class Main {
         Vertice seis = grafo.addVertice("6");
         Vertice sete = grafo.addVertice("7");
 
-        grafo.addAresta(um, dois, 0);
-        grafo.addAresta(um, quatro, 0);
-        grafo.addAresta(um, tres, 0);
-        grafo.addAresta(dois, tres, 0);
-        grafo.addAresta(tres, sete, 0);
-        grafo.addAresta(seis, sete, 0);
-        grafo.addAresta(cinco, quatro, 0);
+        grafo.addAresta(um, dois, 5);
+        grafo.addAresta(um, quatro, 3);
+        grafo.addAresta(um, tres, 3);
+        grafo.addAresta(dois, tres, 4);
+        grafo.addAresta(tres, sete, 5);
+        grafo.addAresta(seis, sete, 3);
+        grafo.addAresta(cinco, quatro, 1);
 
-        Vertice buscado = grafo.getVerticePorValor("4");
+        // Vertice buscado = grafo.getVerticePorValor("4");
 
         // System.out.println("\n\n");
         // grafo.printAllVertices();
-        grafo.printAdjListDeUmVertice(tres);
-        grafo.removeAresta(tres, dois);
-        System.out.println("Novos vertices: ");
-        grafo.printAdjListDeUmVertice(tres);
-        System.out.println("Busca em largura");
-        Grafo.buscaEmLargura(sete);
+        // grafo.printAdjListDeUmVertice(tres);
+        // grafo.removeAresta(tres, dois);
+        // System.out.println("Novos vertices: ");
+        // grafo.printAdjListDeUmVertice(tres);
+        // System.out.println("Busca em largura");
+        // Grafo.buscaEmLargura(sete);
 
-        System.out.println(grafo.verificarAresta(cinco, quatro) + "\n\n\n\n\n\n");
+        // System.out.println(grafo.verificarAresta(cinco, quatro) + "\n\n\n\n\n\n");
 
-        grafo.buscaDijkstra(um, um);
+        grafo.buscaDijkstra(um, sete);
     }
 
 }

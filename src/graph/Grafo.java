@@ -50,28 +50,38 @@ public class Grafo {
 
     public void buscaDijkstra(Vertice inicio, Vertice destino) {
         ArrayList<Vertice> verticesAbertos = new ArrayList<>();
-        Map<Vertice, Integer> vAnterior_peso = new HashMap<Vertice, Integer>(); // esse map deveria conter(cada aresta, um antecessor e peso até ali)
-        vertices.forEach(vertice -> vAnterior_peso.put(vertice, Integer.MAX_VALUE));
-        vAnterior_peso.put(inicio, 0);
+
+        Map<Vertice, Vertice> vAnterior = new HashMap<Vertice, Vertice>(); // esse map deveria conter(cada aresta, um //
+                                                                           // // antecessor e peso até ali)
+        Map<Vertice, Integer> pesoAresta = new HashMap<Vertice, Integer>();
+        Vertice initialize = null;
+
+        vertices.forEach(vertice -> vAnterior.put(vertice, initialize)); // inicializo cada vertice
+        vertices.forEach(vertice -> pesoAresta.put(vertice, Integer.MAX_VALUE)); // inicializo cada vertice
+        vAnterior.put(inicio, inicio);
+        pesoAresta.put(inicio, 0);
         vertices.forEach(vertice -> verticesAbertos.add(vertice));
+
         while (!verticesAbertos.isEmpty()) {
             int minValueOfVertice = Integer.MAX_VALUE;
             Vertice minVertexValue = null;
 
             for (Vertice v : verticesAbertos) {
-                if (vAnterior_peso.get(v) < minValueOfVertice) {
-                    minValueOfVertice = vAnterior_peso.get(v);
+                if (pesoAresta.get(v) < minValueOfVertice) {
+                    minValueOfVertice = pesoAresta.get(v);
                     minVertexValue = v;
                 }
             }
+            System.out.println("Vertice com valor minimo: " + minVertexValue.getData());
 
             verticesAbertos.remove(minVertexValue);
 
-            // relaxar aresta
             for (Aresta a : minVertexValue.getArestas()) {
-                System.out.println(a.getEnd().getData());
-                vAnterior_peso.put(a.getEnd(), ); // resolver essa estrutura
-                
+                Vertice vAdjacente = a.getEnd();
+                if (a.getGrau() < pesoAresta.get(vAdjacente)) {
+                    vAnterior.put(vAdjacente, a.getStart()); // Insere o caminho no vertice
+                    pesoAresta.put(vAdjacente, a.getGrau()); // Insere o peso até aquele vAdjacente
+                }
             }
         }
     }

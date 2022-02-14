@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package newgrafoic;
+package graph;
 
 /**
  *
@@ -18,7 +18,7 @@ public class Main {
         // TODO code application logic here
         boolean temGrau = true;
         boolean eDirecionado = false;
-        
+
         Grafo grafo = new Grafo(temGrau, eDirecionado);
         Vertice um = grafo.addVertice("1");
         Vertice dois = grafo.addVertice("2");
@@ -27,7 +27,7 @@ public class Main {
         Vertice cinco = grafo.addVertice("5");
         Vertice seis = grafo.addVertice("6");
         Vertice sete = grafo.addVertice("7");
-        
+
         grafo.addAresta(um, dois, 0);
         grafo.addAresta(um, quatro, 0);
         grafo.addAresta(um, tres, 0);
@@ -35,10 +35,9 @@ public class Main {
         grafo.addAresta(tres, sete, 0);
         grafo.addAresta(seis, sete, 0);
         grafo.addAresta(cinco, quatro, 0);
-        
+
         Vertice buscado = grafo.getVerticePorValor("4");
 
-        
         // System.out.println("\n\n");
         // grafo.printAllVertices();
         grafo.printAdjListDeUmVertice(tres);
@@ -47,8 +46,8 @@ public class Main {
         grafo.printAdjListDeUmVertice(tres);
         System.out.println("Busca em largura");
         Grafo.buscaEmLargura(sete);
-        
+
         System.out.println(grafo.verificarAresta(cinco, quatro));
     }
-    
+
 }

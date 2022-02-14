@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package newgrafoic;
+package graph;
 
 /**
  *
@@ -23,7 +23,6 @@ public class Grafo {
         this.eDirecionado = eDirecionado;
     }
 
-    
     public static void buscaEmLargura(Vertice inicio) {
         ArrayList<Vertice> verticesVisitados = new ArrayList<>();
 
@@ -35,8 +34,7 @@ public class Grafo {
         while (!filaVisita.isEmpty()) {
             Object verticeAtual = filaVisita.remove();
             System.out.println(
-                    ((Vertice) verticeAtual).getData()
-            );
+                    ((Vertice) verticeAtual).getData());
 
             for (Aresta a : ((Vertice) verticeAtual).getArestas()) {
                 Vertice vizinho = a.getEnd();
@@ -106,17 +104,17 @@ public class Grafo {
         }
         return null;
     }
-    
-    public void printAdjListDeUmVertice(Vertice v){
-        for(Aresta a: v.getArestas()){
+
+    public void printAdjListDeUmVertice(Vertice v) {
+        for (Aresta a : v.getArestas()) {
             System.out.println(a.getStart().getData() + "==>" + a.getEnd().getData());
         }
     }
-    
-    public boolean verificarAresta(Vertice v1, Vertice v2){
+
+    public boolean verificarAresta(Vertice v1, Vertice v2) {
         ArrayList<Aresta> arestas = v1.getArestas();
-        for(Aresta a: arestas)
-            if(a.getEnd() == v2)               
+        for (Aresta a : arestas)
+            if (a.getEnd() == v2)
                 return true;
         return false;
     }

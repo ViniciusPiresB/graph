@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package newgrafoic;
+package graph;
 
 import java.util.ArrayList;
 
@@ -32,8 +32,8 @@ public class Vertice {
     public ArrayList<Aresta> getArestas() {
         return this.arestas;
     }
-    
-    public String getData(){
+
+    public String getData() {
         return this.data;
     }
 

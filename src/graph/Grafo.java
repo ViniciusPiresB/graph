@@ -51,8 +51,8 @@ public class Grafo {
     public void buscaDijkstra(Vertice inicio, Vertice destino) {
         ArrayList<Vertice> verticesAbertos = new ArrayList<>();
 
-        Map<Vertice, Vertice> vAnterior = new HashMap<Vertice, Vertice>(); // esse map deveria conter(cada aresta, um //
-                                                                           // // antecessor e peso até ali)
+        Map<Vertice, Vertice> vAnterior = new HashMap<Vertice, Vertice>(); // esse map deveria conter(cada aresta, um
+                                                                           // antecessor e peso até ali)
         Map<Vertice, Integer> pesoAresta = new HashMap<Vertice, Integer>();
         Vertice initialize = null;
 
@@ -75,11 +75,9 @@ public class Grafo {
             if (minVertexValue == null)
                 break;
 
-            System.out.println("Vertice com valor minimo: " + minVertexValue.getData());
-
             verticesAbertos.remove(minVertexValue);
 
-            for (Aresta a : minVertexValue.getArestas()) {
+            for (Aresta a : minVertexValue.getArestas()) { // relaxar todas arestas
                 Vertice vAdjacente = a.getEnd();
                 if (a.getGrau() < pesoAresta.get(vAdjacente)) {
                     vAnterior.put(vAdjacente, a.getStart()); // Insere o caminho no vertice
@@ -87,10 +85,18 @@ public class Grafo {
                 }
             }
         }
+
+        ArrayList<Vertice> caminhoMinimo = new ArrayList<Vertice>();
+        caminhoMinimo.add(0, destino);
+
         Vertice anterior = vAnterior.get(destino);
-        System.out.println(destino.getData());
-        System.out.println(anterior.getData());
-        System.out.println(vAnterior.get(anterior).getData());
+        while (anterior != inicio) {
+            caminhoMinimo.add(0, anterior);
+            anterior = vAnterior.get(anterior);
+        }
+        caminhoMinimo.add(0, inicio);
+
+        caminhoMinimo.forEach(v -> System.out.println("Caminho: " + v.getData()));
     }
 
     public Vertice addVertice(String info) {

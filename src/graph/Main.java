@@ -29,8 +29,8 @@ public class Main {
         Vertice sete = grafo.addVertice("7");
 
         grafo.addAresta(um, dois, 5);
-        grafo.addAresta(um, quatro, 3);
-        grafo.addAresta(um, tres, 3);
+        grafo.addAresta(quatro, um, 3);
+        grafo.addAresta(um, tres, 10);
         grafo.addAresta(dois, tres, 4);
         grafo.addAresta(tres, sete, 5);
         grafo.addAresta(seis, sete, 3);
@@ -49,7 +49,7 @@ public class Main {
 
         // System.out.println(grafo.verificarAresta(cinco, quatro) + "\n\n\n\n\n\n");
 
-        grafo.buscaDijkstra(um, sete);
+        grafo.buscaDijkstra(cinco, sete);
     }
 
 }

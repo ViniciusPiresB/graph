@@ -13,12 +13,12 @@ public class Aresta {
 
     private final Vertice start;
     private final Vertice end;
-    private final int grau;
+    private final int tempo;
 
-    public Aresta(Vertice startVertice, Vertice endVertice, int grau) {
+    public Aresta(Vertice startVertice, Vertice endVertice, int tempo) {
         this.start = startVertice;
         this.end = endVertice;
-        this.grau = grau;
+        this.tempo = tempo;
     }
 
     public Vertice getStart() {
@@ -30,6 +30,6 @@ public class Aresta {
     }
 
     public int getGrau() {
-        return this.grau;
+        return this.tempo;
     }
 }

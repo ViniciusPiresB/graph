@@ -25,4 +25,28 @@ public class TemporalPath {
         System.out.println("Duração: " + this.duration + "\nTamanho: " + length + "\nTempo de inicio: " + initTime
                 + "\nTempo final: " + endTime);
     }
+
+    public TemporalPath getPath() {
+        return this; // incompleto
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public Vertice getInit() {
+        return init;
+    }
+
+    public Vertice getEnd() {
+        return end;
+    }
+
+    public int getInitTime() {
+        return initTime;
+    }
+
+    public int getEndTime() {
+        return initTime;
+    }
 }

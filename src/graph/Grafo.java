@@ -79,9 +79,9 @@ public class Grafo {
 
             for (Aresta a : minVertexValue.getArestas()) { // relaxar todas arestas
                 Vertice vAdjacente = a.getEnd();
-                if (a.getGrau() < pesoAresta.get(vAdjacente)) {
+                if (a.getTempo() < pesoAresta.get(vAdjacente)) {
                     vAnterior.put(vAdjacente, a.getStart()); // Insere o caminho no vertice
-                    pesoAresta.put(vAdjacente, a.getGrau()); // Insere o peso até aquele vAdjacente
+                    pesoAresta.put(vAdjacente, a.getTempo()); // Insere o peso até aquele vAdjacente
                 }
             }
         }

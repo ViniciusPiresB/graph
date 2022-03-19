@@ -29,7 +29,7 @@ public class Aresta {
         return this.end;
     }
 
-    public int getGrau() {
+    public int getTempo() {
         return this.tempo;
     }
 }

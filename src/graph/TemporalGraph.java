@@ -23,7 +23,8 @@ public class TemporalGraph {
 
             for (Aresta aresta : arestas) {
                 List<Aresta> init = new ArrayList<>();
-                TemporalPath p = new TemporalPath(init, aresta.getStart(), aresta.getEnd(), 0, 1, 0, 0);
+                TemporalPath p = new TemporalPath(init, aresta.getStart(), aresta.getEnd(), 0, 1, aresta.getTempo(),
+                        aresta.getTempo());
                 p.edges.add(aresta);
                 P.add(p);
             }
@@ -36,8 +37,9 @@ public class TemporalGraph {
                     for (TemporalPath q : P) {
                         if (!p.equals(q)) {
                             if ((p.getLength() + q.getLength()) == currentPathLength) {
-                                if (p.getEnd() == p.getInit()) {
+                                if (p.getEnd().equals(q.getInit())) {
                                     if (p.getEndTime() + R + T <= q.getInitTime()) {
+                                        System.out.println("Entrou");
                                         TemporalPath r = p.concatPath(q);
                                         pTemp.add(r);
                                     }

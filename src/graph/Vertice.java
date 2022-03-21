@@ -40,4 +40,5 @@ public class Vertice {
     public void print() {
         System.out.println(data);
     }
+
 }

@@ -30,7 +30,7 @@ public class TemporalGraph {
 
             int currentPathLength = 1;
             while (true) {
-                TemporalPath pTemp = null;
+                List<TemporalPath> pTemp = new ArrayList<TemporalPath>();
                 currentPathLength++;
                 for (TemporalPath p : P) {
                     for (TemporalPath q : P) {
@@ -38,18 +38,22 @@ public class TemporalGraph {
                             if ((p.getLength() + q.getLength()) == currentPathLength) {
                                 if (p.getEnd() == p.getInit()) {
                                     if (p.getEndTime() + R + T <= q.getInitTime()) {
-                                        // r recebe p + q
-                                        // pTemp recebe r
+                                        TemporalPath r = p.concatPath(q);
+                                        pTemp.add(r);
                                     }
                                 }
                             }
                         }
                     }
                 }
+                if (pTemp.isEmpty())
+                    break;
+                else
+                    P.addAll(pTemp);
+
             }
 
         }
-
         return P;
     }
 

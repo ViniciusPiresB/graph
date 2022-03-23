@@ -5,8 +5,6 @@
  */
 package graph;
 
-import java.util.List;
-
 /**
  *
  * @author Vinicius
@@ -17,9 +15,10 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        boolean eDirecionado = true;
+        boolean eDirecionado = false;
+        boolean temPeso = true;
 
-        TemporalGraph grafo = new TemporalGraph(eDirecionado);
+        Grafo grafo = new Grafo(temPeso, eDirecionado);
 
         Vertice um = grafo.addVertice("1");
         Vertice dois = grafo.addVertice("2");
@@ -35,7 +34,9 @@ public class Main {
         grafo.addAresta(tres, quatro, 11);
         grafo.addAresta(tres, quatro, 12);
 
-        grafo.allPairsTemporalPaths().forEach(tPath -> tPath.printPath());
+        Grafo.buscaEmLargura(quatro);
+
+        // grafo.allPairsTemporalPaths().forEach(tPath -> tPath.printPath());
     }
 
 }

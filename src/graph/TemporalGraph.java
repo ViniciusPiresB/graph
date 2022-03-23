@@ -11,8 +11,8 @@ public class TemporalGraph {
         this.eDirecionado = eDirecionado;
     }
 
-    private int R = 1;
-    private int T = 0;
+    private int retentionTime = 1;
+    private int traversalTime = 0;
 
     public List<TemporalPath> allPairsTemporalPaths() {
         List<TemporalPath> P = new ArrayList<TemporalPath>();
@@ -38,7 +38,7 @@ public class TemporalGraph {
                         if (!p.equals(q)) {
                             if ((p.getLength() + q.getLength()) == currentPathLength) {
                                 if (p.getEnd().equals(q.getInit())) {
-                                    if (p.getEndTime() + R + T <= q.getInitTime()) {
+                                    if (p.getEndTime() + retentionTime + traversalTime <= q.getInitTime()) {
                                         System.out.println("Entrou");
                                         TemporalPath r = p.concatPath(q);
                                         pTemp.add(r);

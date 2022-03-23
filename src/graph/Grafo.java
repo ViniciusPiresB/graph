@@ -14,12 +14,12 @@ import java.util.*;
 public class Grafo {
 
     private final ArrayList<Vertice> vertices;
-    private final boolean temGrau;
+    private final boolean temPeso;
     private final boolean eDirecionado;
 
-    public Grafo(boolean temGrau, boolean eDirecionado) {
+    public Grafo(boolean temPeso, boolean eDirecionado) {
         this.vertices = new ArrayList<>();
-        this.temGrau = temGrau;
+        this.temPeso = temPeso;
         this.eDirecionado = eDirecionado;
     }
 
@@ -105,15 +105,15 @@ public class Grafo {
         return newVertice;
     }
 
-    public void addAresta(Vertice v1, Vertice v2, Integer grau) {
-        if (!this.temGrau) {
-            grau = null;
+    public void addAresta(Vertice v1, Vertice v2, Integer Peso) {
+        if (!this.temPeso) {
+            Peso = null;
         }
 
-        v1.addAresta(v2, grau);
+        v1.addAresta(v2, Peso);
 
         if (!this.eDirecionado) {
-            v2.addAresta(v1, grau);
+            v2.addAresta(v1, Peso);
         }
     }
 
@@ -133,8 +133,8 @@ public class Grafo {
         return this.vertices;
     }
 
-    public boolean temGrau() {
-        return this.temGrau;
+    public boolean temPeso() {
+        return this.temPeso;
     }
 
     public boolean eDirecionado() {

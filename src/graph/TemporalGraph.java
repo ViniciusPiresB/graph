@@ -17,46 +17,46 @@ public class TemporalGraph {
     public List<TemporalPath> allPairsTemporalPaths() {
         List<TemporalPath> P = new ArrayList<TemporalPath>();
 
+        ArrayList<Aresta> arestas = new ArrayList<>();
+
         for (Vertice vertice : vertices) {
+            arestas.addAll(vertice.getArestas());
+        }
 
-            ArrayList<Aresta> arestas = vertice.getArestas();
+        for (Aresta aresta : arestas) {
+            List<Aresta> init = new ArrayList<>();
+            TemporalPath p = new TemporalPath(init, aresta.getStart(), aresta.getEnd(), 0, 1, aresta.getTempo(),
+                    aresta.getTempo());
+            p.edges.add(aresta);
+            P.add(p);
+        }
 
-            for (Aresta aresta : arestas) {
-                List<Aresta> init = new ArrayList<>();
-                TemporalPath p = new TemporalPath(init, aresta.getStart(), aresta.getEnd(), 0, 1, aresta.getTempo(),
-                        aresta.getTempo());
-                p.edges.add(aresta);
-                P.add(p);
-            }
-
-            int currentPathLength = 1;
-            while (true) {
-                List<TemporalPath> pTemp = new ArrayList<TemporalPath>();
-                currentPathLength++;
-                for (TemporalPath p : P) {
-                    for (TemporalPath q : P) {
-                        if (!p.equals(q)) {
-                            if ((p.getLength() + q.getLength()) == currentPathLength) {
-                                if (p.getEnd().equals(q.getInit())) {
-                                    if (p.getEndTime() + retentionTime + traversalTime <= q.getInitTime()) {
-                                        System.out.println("Entrou");
-                                        TemporalPath r = p.concatPath(q);
-                                        pTemp.add(r);
-                                    }
+        int currentPathLength = 1;
+        while (true) {
+            List<TemporalPath> pTemp = new ArrayList<TemporalPath>();
+            currentPathLength++;
+            for (TemporalPath p : P) {
+                for (TemporalPath q : P) {
+                    if (!p.equals(q)) {
+                        if ((p.getLength() + q.getLength()) == currentPathLength) {
+                            if (p.getEnd().equals(q.getInit())) {
+                                if (p.getEndTime() + retentionTime + traversalTime <= q.getInitTime()) {
+                                    TemporalPath r = p.concatPath(q);
+                                    pTemp.add(r);
                                 }
                             }
                         }
                     }
                 }
-                if (pTemp.isEmpty())
-                    break;
-                else
-                    P.addAll(pTemp);
-
             }
+            if (pTemp.isEmpty())
+                break;
+            else
+                P.addAll(pTemp);
 
         }
         return P;
+
     }
 
     public Vertice addVertice(String info) {

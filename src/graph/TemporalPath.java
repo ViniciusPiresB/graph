@@ -75,6 +75,10 @@ public class TemporalPath {
         this.initTime = time;
     }
 
+    public int getDuration() {
+        return duration;
+    }
+
     public void setEndTime(int time) {
         this.endTime = time;
     }

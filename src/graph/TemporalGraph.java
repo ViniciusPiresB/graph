@@ -59,6 +59,25 @@ public class TemporalGraph {
 
     }
 
+    public TemporalPath fastestPath(Vertice init, Vertice end) {
+        List<TemporalPath> allPaths = allPairsTemporalPaths();
+        List<TemporalPath> completePaths = new ArrayList<>();
+
+        for (TemporalPath path : allPaths)
+            if (path.getInit().equals(init) && path.getEnd().equals(end))
+                completePaths.add(path);
+
+        int duracaoMin = Integer.MAX_VALUE;
+        TemporalPath fastestPath = null;
+
+        for (TemporalPath path : completePaths)
+            if (path.getDuration() < duracaoMin) {
+                duracaoMin = path.getDuration();
+                fastestPath = path;
+            }
+        return fastestPath;
+    }
+
     public Vertice addVertice(String info) {
         Vertice newVertice = new Vertice(info);
         this.vertices.add(newVertice);

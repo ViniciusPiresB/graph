@@ -18,7 +18,6 @@ public class Main {
      */
     public static void main(String[] args) {
         boolean eDirecionado = true;
-        boolean temPeso = true;
 
         TemporalGraph grafo = new TemporalGraph(eDirecionado);
 
@@ -39,8 +38,9 @@ public class Main {
         // Grafo.buscaEmLargura(quatro);
         List<TemporalPath> allPairs = grafo.allPairsTemporalPaths();
         System.out.println();
-        allPairs.forEach(tPath -> tPath.printPath());
-        System.out.println(allPairs.size());
+        // allPairs.forEach(tPath -> tPath.printPath());
+        // System.out.println(allPairs.size());
+        grafo.fastestPath(um, quatro).printPath();
     }
 
 }

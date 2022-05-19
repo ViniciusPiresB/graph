@@ -5,8 +5,6 @@
  */
 package graph;
 
-import java.util.List;
-
 /**
  *
  * @author Vinicius
@@ -35,11 +33,6 @@ public class Main {
         grafo.addAresta(tres, quatro, 11);
         grafo.addAresta(tres, quatro, 12);
 
-        // Grafo.buscaEmLargura(quatro);
-        List<TemporalPath> allPairs = grafo.allPairsTemporalPaths();
-        System.out.println();
-        // allPairs.forEach(tPath -> tPath.printPath());
-        // System.out.println(allPairs.size());
         grafo.fastestPath(um, quatro).printPath();
     }
 

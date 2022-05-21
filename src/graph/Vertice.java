@@ -19,7 +19,7 @@ public class Vertice {
     public Vertice(String data) {
         this.data = data;
         this.arestas = new ArrayList<>();
-    }
+    } //
 
     public void addAresta(Vertice verticeFinal, int grau) {
         this.arestas.add(new Aresta(this, verticeFinal, grau));

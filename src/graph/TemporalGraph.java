@@ -59,8 +59,7 @@ public class TemporalGraph {
 
     }
 
-    public TemporalPath fastestPath(Vertice init, Vertice end) {
-        List<TemporalPath> allPaths = allPairsTemporalPaths();
+    public TemporalPath fastestPath(Vertice init, Vertice end, List<TemporalPath> allPaths) {
         List<TemporalPath> completePaths = new ArrayList<>();
 
         for (TemporalPath path : allPaths)

@@ -37,7 +37,9 @@ public class Main {
 
         List<TemporalPath> allPaths = grafo.allPairsTemporalPaths();
 
-        grafo.fastestPath(um, quatro, allPaths).printPath();
+        List<TemporalPath> tPaths = grafo.fastestPathOfEachVertex(allPaths);
+
+        tPaths.forEach(path -> path.printPath());
     }
 
 }

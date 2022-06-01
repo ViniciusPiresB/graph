@@ -59,7 +59,7 @@ public class TemporalGraph {
 
     }
 
-    public TemporalPath fastestPath(Vertice init, Vertice end, List<TemporalPath> allPaths) {
+    public List<TemporalPath> fastestPath(Vertice init, Vertice end, List<TemporalPath> allPaths) {
         List<TemporalPath> completePaths = new ArrayList<>();
 
         for (TemporalPath path : allPaths)
@@ -67,14 +67,33 @@ public class TemporalGraph {
                 completePaths.add(path);
 
         int duracaoMin = Integer.MAX_VALUE;
-        TemporalPath fastestPath = null;
 
-        for (TemporalPath path : completePaths)
-            if (path.getDuration() < duracaoMin) {
-                duracaoMin = path.getDuration();
-                fastestPath = path;
-            }
+        List<TemporalPath> fastestPath = new ArrayList<>();
+
+        for (TemporalPath path : completePaths) {
+            int durationOfPath = path.getDuration();
+            if (durationOfPath < duracaoMin) {
+                fastestPath.clear();
+                duracaoMin = durationOfPath;
+                fastestPath.add(path);
+            } else if (durationOfPath == duracaoMin)
+                fastestPath.add(path);
+        }
         return fastestPath;
+    }
+
+    public List<TemporalPath> fastestPathOfEachVertex(List<TemporalPath> allPaths) {
+        List<TemporalPath> allFastestPaths = new ArrayList<TemporalPath>();
+        List<Vertice> allVertex = this.vertices;
+
+        for (Vertice v1 : allVertex)
+            for (Vertice v2 : allVertex)
+                if (!v1.equals(v2)) {
+                    List<TemporalPath> pTemp = fastestPath(v1, v2, allPaths);
+                    allFastestPaths.addAll(pTemp);
+                }
+
+        return allFastestPaths;
     }
 
     public Vertice addVertice(String info) {

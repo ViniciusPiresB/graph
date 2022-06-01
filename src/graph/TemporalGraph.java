@@ -96,6 +96,18 @@ public class TemporalGraph {
         return allFastestPaths;
     }
 
+    public float closeness(Vertice init, List<TemporalPath> allFastestPath) {
+        float sum = 0;
+        for (TemporalPath p : allFastestPath) {
+            if (p.getInit().equals(init)) {
+                int duration = p.getDuration();
+                if (duration != 0)
+                    sum = sum + (1 / duration);
+            }
+        }
+        return sum;
+    }
+
     public Vertice addVertice(String info) {
         Vertice newVertice = new Vertice(info);
         this.vertices.add(newVertice);

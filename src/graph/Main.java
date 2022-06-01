@@ -40,6 +40,8 @@ public class Main {
         List<TemporalPath> tPaths = grafo.fastestPathOfEachVertex(allPaths);
 
         tPaths.forEach(path -> path.printPath());
+
+        System.out.println(grafo.closeness(dois, tPaths));
     }
 
 }

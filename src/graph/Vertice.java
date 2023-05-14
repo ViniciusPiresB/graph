@@ -13,10 +13,10 @@ import java.util.ArrayList;
  */
 public class Vertice {
 
-    private final String data;
+    private final int data;
     private final ArrayList<Aresta> arestas;
 
-    public Vertice(String data) {
+    public Vertice(int data) {
         this.data = data;
         this.arestas = new ArrayList<>();
     } //
@@ -33,7 +33,7 @@ public class Vertice {
         return this.arestas;
     }
 
-    public String getData() {
+    public int getData() {
         return this.data;
     }
 

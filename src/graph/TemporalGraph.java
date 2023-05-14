@@ -108,7 +108,7 @@ public class TemporalGraph {
         return sum;
     }
 
-    public Vertice addVertice(String info) {
+    public Vertice addVertice(int info) {
         Vertice newVertice = new Vertice(info);
         this.vertices.add(newVertice);
         return newVertice;
